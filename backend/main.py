@@ -2,6 +2,22 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from fastapi import FastAPI
+from scripts.extract_soco_data import get_grid_data
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {
+        "message": "VIRIDIS Grid Stress API Running"
+    }
+
+@app.get("/grid-stress")
+def grid_stress():
+    result = get_grid_data("SOCO")
+    return result
+
 # =====================================================================
 # PHASE 1: Initialization & Schema Setup
 # =====================================================================
