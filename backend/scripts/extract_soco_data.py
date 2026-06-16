@@ -1,39 +1,50 @@
 import requests
 import pandas as pd
+# Path helps us create folders before saving the CSV file.
+from pathlib import Path
 
 API_KEY = "6f31r6Jf7Mf3NXJAdfTvUSvtKBR2Sjg2SQY5y4Ta"
 
 url = "https://api.eia.gov/v2/electricity/rto/region-data/data/"
 
 def get_grid_data(balancing_authority_code):
+    # EIA uses short type codes in the API response.
+    # We map those short codes to easier-to-read column names for our CSV.
+    type_map = {
+        "D": "Demand",
+        "NG": "Net Generation",
+        "DF": "Day-ahead demand forecast"
+    }
+
     params = {
-    "api_key": API_KEY,
-    "frequency": "hourly",
-    "data[0]": "value",
-    "facets[respondent][]": balancing_authority_code,
-    "sort[0][column]": "period",
-    "sort[0][direction]": "desc",
-    "length": 24
+        "api_key": API_KEY,
+        "frequency": "hourly",
+        "data[0]": "value",
+        "facets[respondent][]": balancing_authority_code,
+        # Ask the API for only the three data streams we care about.
+        # This is more reliable than filtering by the display names later,
+        # because names can have small spelling/capitalization differences.
+        "facets[type][]": list(type_map.keys()),
+        "sort[0][column]": "period",
+        "sort[0][direction]": "desc",
+        # "length" means number of raw API rows, not number of hours.
+        # We request extra rows so we have enough data after filtering/pivoting.
+        "length": 500
     }
 
     response = requests.get(url, params=params)
+    # Stop immediately if the API request failed, instead of using bad data.
+    response.raise_for_status()
 
     data = response.json()["response"]["data"]
 
     df = pd.DataFrame(data)
 
-    #keeping only relevant standard streams
-    standard_streams = [
-        "Demand",
-        "Net Generation",
-        "Day-ahead demand forecast"
-    ]
-
-
-    df_filtered = df[df["type-name"].isin(standard_streams)]
-
-    #renaming for clarity
-    df_filtered = df_filtered.rename(columns={"type-name": "metric"})
+    # Keep only the rows with type codes from type_map.
+    # .copy() makes a separate DataFrame so pandas does not warn us later.
+    df_filtered = df[df["type"].isin(type_map.keys())].copy()
+    # Create a new column called "metric" with readable names like "Demand".
+    df_filtered["metric"] = df_filtered["type"].map(type_map)
 
     # ensure numeric values
     df_filtered["value"] = pd.to_numeric(df_filtered["value"], errors="coerce")
@@ -62,20 +73,37 @@ def get_grid_data(balancing_authority_code):
     
     #---------PHASE 02: HANDLING MISSING VALUES-------------------------------------
 
-    #using interpolation to fill missing data using estimation from nearby values
-    #period (row) --> becomes column
+    # The API can skip some hours. Machine learning works better when every
+    # hour is present, so we build a complete hourly timeline first.
+    df_pivot = df_pivot.drop_duplicates(subset=["period"])
+    earliest_period = df_pivot["period"].min()
+    latest_period = df_pivot["period"].max()
+    hourly_index = pd.date_range(
+        start=earliest_period,
+        end=latest_period,
+        freq="h"
+    )
+
     df_pivot = df_pivot.set_index("period")
-    #time estimation
+    # Add rows for any missing hours. These new rows will have empty values
+    # until we fill them in below.
+    df_pivot = df_pivot.reindex(hourly_index)
+    df_pivot.index.name = "period"
+    df_pivot["respondent"] = balancing_authority_code
+
+    # Estimate missing numeric values using nearby hours.
+    # Example: if 2 PM and 4 PM exist but 3 PM is missing, interpolate creates
+    # a reasonable 3 PM value between them.
     numeric_cols = df_pivot.select_dtypes(include=["number"]).columns
     df_pivot[numeric_cols] = df_pivot[numeric_cols].interpolate(method="time")
 
     df_pivot = df_pivot.reset_index()
 
-    #clean duplicate values 
-    df_pivot = df_pivot.drop_duplicates(subset=["period"])
-
-    #fill missing values by copying the most recent value above it
-    df_pivot = df_pivot.ffill()
+    # If missing values are at the very beginning or end, interpolation cannot
+    # always fill them. ffill/bfill copies the nearest known value.
+    df_pivot = df_pivot.ffill().bfill()
+    # After cleaning, keep only the most recent 24 hourly rows.
+    df_pivot = df_pivot.tail(24)
 
     #-------PHASE 03: ALGORITHM AND LOGIC ENGINE IMPLEMENTATION-------------------------------------
     def phase_3(df_pivot):
@@ -89,7 +117,7 @@ def get_grid_data(balancing_authority_code):
         #grid stress (%): how close are we to MAX grid pressure 
         stress = (current_demand/peak_capacity) * 100
 
-        #timestamp
+        #timestamp of the latest data point
         latest_timestamp = str(df_pivot["period"].iloc[-1])
 
         #logic for risk level
@@ -132,8 +160,8 @@ def get_grid_data(balancing_authority_code):
     result = phase_3(df_pivot)
     print(result)
 
+    # Make sure the folder exists before trying to save the CSV.
+    Path("data/raw").mkdir(parents=True, exist_ok=True)
     df_pivot.to_csv(f"data/raw/{balancing_authority_code}_data.csv", index=False)
 
     return result
-
-
