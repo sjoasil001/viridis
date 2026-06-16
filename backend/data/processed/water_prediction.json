@@ -1,0 +1,432 @@
+{
+  "site": {
+    "id": "google_douglas",
+    "name": "Google Douglas County Data Center",
+    "operator": "Google",
+    "county": "Douglas County, Georgia",
+    "latitude": 33.75,
+    "longitude": -84.75,
+    "searchRadiusMiles": 20,
+    "coolingType": "Recycled industrial water / cooling infrastructure",
+    "sourceUrl": "https://datacenters.google/locations/georgia/"
+  },
+  "generatedAt": "2026-06-14T19:48:52.016146+00:00",
+  "currentWaterSafetyIndex": 86.83,
+  "predicted30DayIndex": 81.5,
+  "currentRiskLevel": "Safe",
+  "predictedRiskLevel": "Safe",
+  "topConcern": "Turbidity is the weakest signal",
+  "model": "Simple linear trend on monthly Water Safety Index values",
+  "dataSummary": {
+    "rawMeasurementCount": 42565,
+    "monthlyScoreCount": 805,
+    "firstMonth": "1937-05",
+    "latestMonth": "2026-03",
+    "uniqueStations": 293,
+    "characteristics": [
+      "pH",
+      "Temperature, water",
+      "Dissolved oxygen (DO)",
+      "Turbidity"
+    ]
+  },
+  "latestMetrics": {
+    "pH": 6.681,
+    "Temperature, water": 16.52,
+    "Dissolved oxygen (DO)": 8.473,
+    "Turbidity": 19.452
+  },
+  "latestComponentScores": {
+    "pH": 100.0,
+    "dissolvedOxygen": 100.0,
+    "temperature": 94.01,
+    "turbidity": 22.19
+  },
+  "monthlySeries": [
+    {
+      "month": "2024-04",
+      "waterSafetyIndex": 86.14,
+      "metrics": {
+        "pH": 6.4987,
+        "Temperature, water": 16.8733,
+        "Dissolved oxygen (DO)": 8.66,
+        "Turbidity": 8.4027
+      },
+      "componentScores": {
+        "pH": 74.97,
+        "dissolvedOxygen": 100.0,
+        "temperature": 89.77,
+        "turbidity": 66.39
+      }
+    },
+    {
+      "month": "2024-05",
+      "waterSafetyIndex": 80.09,
+      "metrics": {
+        "pH": 6.5317,
+        "Temperature, water": 20.3583,
+        "Dissolved oxygen (DO)": 7.6658,
+        "Turbidity": 9.0671
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 95.82,
+        "temperature": 47.95,
+        "turbidity": 63.73
+      }
+    },
+    {
+      "month": "2024-06",
+      "waterSafetyIndex": 67.84,
+      "metrics": {
+        "pH": 7.036,
+        "Temperature, water": 24.48,
+        "Dissolved oxygen (DO)": 7.438,
+        "Turbidity": 7.835
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 92.97,
+        "temperature": 0.0,
+        "turbidity": 68.66
+      }
+    },
+    {
+      "month": "2024-07",
+      "waterSafetyIndex": 59.05,
+      "metrics": {
+        "pH": 6.575,
+        "Temperature, water": 24.725,
+        "Dissolved oxygen (DO)": 7.12,
+        "Turbidity": 20.165
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 89.0,
+        "temperature": 0.0,
+        "turbidity": 19.34
+      }
+    },
+    {
+      "month": "2024-08",
+      "waterSafetyIndex": 69.25,
+      "metrics": {
+        "pH": 6.6218,
+        "Temperature, water": 24.2364,
+        "Dissolved oxygen (DO)": 7.4291,
+        "Turbidity": 6.0118
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 92.86,
+        "temperature": 1.41,
+        "turbidity": 75.95
+      }
+    },
+    {
+      "month": "2024-09",
+      "waterSafetyIndex": 60.3,
+      "metrics": {
+        "pH": 6.329,
+        "Temperature, water": 22.49,
+        "Dissolved oxygen (DO)": 7.127,
+        "Turbidity": 15.253
+      },
+      "componentScores": {
+        "pH": 70.72,
+        "dissolvedOxygen": 89.09,
+        "temperature": 22.37,
+        "turbidity": 38.99
+      }
+    },
+    {
+      "month": "2024-10",
+      "waterSafetyIndex": 92.03,
+      "metrics": {
+        "pH": 6.6082,
+        "Temperature, water": 14.9636,
+        "Dissolved oxygen (DO)": 9.2191,
+        "Turbidity": 7.9921
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 87.31,
+        "turbidity": 68.03
+      }
+    },
+    {
+      "month": "2024-11",
+      "waterSafetyIndex": 81.61,
+      "metrics": {
+        "pH": 6.3755,
+        "Temperature, water": 18.6182,
+        "Dissolved oxygen (DO)": 7.9109,
+        "Turbidity": 5.3052
+      },
+      "componentScores": {
+        "pH": 71.89,
+        "dissolvedOxygen": 98.89,
+        "temperature": 68.83,
+        "turbidity": 78.78
+      }
+    },
+    {
+      "month": "2024-12",
+      "waterSafetyIndex": 60.0,
+      "metrics": {
+        "pH": 6.5183,
+        "Temperature, water": 7.2075,
+        "Dissolved oxygen (DO)": 10.7542,
+        "Turbidity": 40.3247
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 0.0,
+        "turbidity": 0.0
+      }
+    },
+    {
+      "month": "2025-01",
+      "waterSafetyIndex": 63.63,
+      "metrics": {
+        "pH": 6.4164,
+        "Temperature, water": 6.1818,
+        "Dissolved oxygen (DO)": 11.5418,
+        "Turbidity": 7.6664
+      },
+      "componentScores": {
+        "pH": 72.91,
+        "dissolvedOxygen": 100.0,
+        "temperature": 0.0,
+        "turbidity": 69.33
+      }
+    },
+    {
+      "month": "2025-02",
+      "waterSafetyIndex": 68.18,
+      "metrics": {
+        "pH": 6.26,
+        "Temperature, water": 10.9545,
+        "Dissolved oxygen (DO)": 10.4436,
+        "Turbidity": 14.7786
+      },
+      "componentScores": {
+        "pH": 69.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 39.2,
+        "turbidity": 40.89
+      }
+    },
+    {
+      "month": "2025-03",
+      "waterSafetyIndex": 76.4,
+      "metrics": {
+        "pH": 7.052,
+        "Temperature, water": 13.1533,
+        "Dissolved oxygen (DO)": 9.49,
+        "Turbidity": 25.2364
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 65.59,
+        "turbidity": 0.0
+      }
+    },
+    {
+      "month": "2025-04",
+      "waterSafetyIndex": 87.37,
+      "metrics": {
+        "pH": 6.9031,
+        "Temperature, water": 18.9,
+        "Dissolved oxygen (DO)": 8.4146,
+        "Turbidity": 6.6468
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 65.45,
+        "turbidity": 73.41
+      }
+    },
+    {
+      "month": "2025-05",
+      "waterSafetyIndex": 84.83,
+      "metrics": {
+        "pH": 6.3113,
+        "Temperature, water": 15.6125,
+        "Dissolved oxygen (DO)": 9.0575,
+        "Turbidity": 10.8594
+      },
+      "componentScores": {
+        "pH": 70.28,
+        "dissolvedOxygen": 100.0,
+        "temperature": 95.1,
+        "turbidity": 56.56
+      }
+    },
+    {
+      "month": "2025-06",
+      "waterSafetyIndex": 73.12,
+      "metrics": {
+        "pH": 6.862,
+        "Temperature, water": 22.4533,
+        "Dissolved oxygen (DO)": 7.564,
+        "Turbidity": 9.4655
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 94.55,
+        "temperature": 22.81,
+        "turbidity": 62.14
+      }
+    },
+    {
+      "month": "2025-07",
+      "waterSafetyIndex": 61.72,
+      "metrics": {
+        "pH": 6.7267,
+        "Temperature, water": 22.95,
+        "Dissolved oxygen (DO)": 7.4292,
+        "Turbidity": 29.8591
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 92.86,
+        "temperature": 16.85,
+        "turbidity": 0.0
+      }
+    },
+    {
+      "month": "2025-08",
+      "waterSafetyIndex": 75.36,
+      "metrics": {
+        "pH": 6.6618,
+        "Temperature, water": 22.3545,
+        "Dissolved oxygen (DO)": 7.8182,
+        "Turbidity": 8.0664
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 97.73,
+        "temperature": 24.0,
+        "turbidity": 67.73
+      }
+    },
+    {
+      "month": "2025-09",
+      "waterSafetyIndex": 84.43,
+      "metrics": {
+        "pH": 6.7925,
+        "Temperature, water": 20.25,
+        "Dissolved oxygen (DO)": 8.0125,
+        "Turbidity": 4.7996
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 49.25,
+        "turbidity": 80.8
+      }
+    },
+    {
+      "month": "2025-10",
+      "waterSafetyIndex": 95.2,
+      "metrics": {
+        "pH": 6.5069,
+        "Temperature, water": 16.5923,
+        "Dissolved oxygen (DO)": 8.6346,
+        "Turbidity": 5.1356
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 93.14,
+        "turbidity": 79.46
+      }
+    },
+    {
+      "month": "2025-11",
+      "waterSafetyIndex": 87.81,
+      "metrics": {
+        "pH": 6.8254,
+        "Temperature, water": 13.2846,
+        "Dissolved oxygen (DO)": 9.3277,
+        "Turbidity": 6.6333
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 67.17,
+        "turbidity": 73.47
+      }
+    },
+    {
+      "month": "2025-12",
+      "waterSafetyIndex": 73.76,
+      "metrics": {
+        "pH": 7.2018,
+        "Temperature, water": 8.5765,
+        "Dissolved oxygen (DO)": 10.5741,
+        "Turbidity": 6.5136
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 10.67,
+        "turbidity": 73.95
+      }
+    },
+    {
+      "month": "2026-01",
+      "waterSafetyIndex": 67.51,
+      "metrics": {
+        "pH": 6.8427,
+        "Temperature, water": 7.1364,
+        "Dissolved oxygen (DO)": 10.9418,
+        "Turbidity": 12.4771
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 0.0,
+        "turbidity": 50.09
+      }
+    },
+    {
+      "month": "2026-02",
+      "waterSafetyIndex": 84.26,
+      "metrics": {
+        "pH": 6.9117,
+        "Temperature, water": 11.8417,
+        "Dissolved oxygen (DO)": 9.8342,
+        "Turbidity": 5.3435
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 49.85,
+        "turbidity": 78.63
+      }
+    },
+    {
+      "month": "2026-03",
+      "waterSafetyIndex": 86.83,
+      "metrics": {
+        "pH": 6.681,
+        "Temperature, water": 16.52,
+        "Dissolved oxygen (DO)": 8.473,
+        "Turbidity": 19.452
+      },
+      "componentScores": {
+        "pH": 100.0,
+        "dissolvedOxygen": 100.0,
+        "temperature": 94.01,
+        "turbidity": 22.19
+      }
+    }
+  ],
+  "verificationHash": "09aba8fb5fd8015580767247231d5833cfc329aa1d130936b91525129a182140"
+}
